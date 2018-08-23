@@ -17,24 +17,54 @@ window.onresize = function () {
     reSizeCanvas(newCanvas)
 }
 
+//画笔是否开启控制
 var using = false
-lastPoint = {
-    "x":undefined,
-    "y":undefined
+
+//橡皮擦控制
+var usingEraser = false
+
+
+
+
+//当橡皮擦按钮被点击时，橡皮擦取反
+var buttonEraser = document.getElementById('eraser')
+var buttonBrush = document.getElementById('brush')
+var actions = document.getElementById('actions')
+buttonEraser.onclick = function () {
+    usingEraser = !usingEraser
+    actions.className = "actions x"
 }
 
+buttonBrush.onclick = function () {
+    usingEraser = !usingEraser
+    actions.className = "actions"
+}
+
+
+//定义初始点
+lastPoint = {
+    "x": undefined,
+    "y": undefined
+}
+
+//当鼠标按下时，开启画笔，记录当前画笔坐标，并画点
 newCanvas.onmousedown = function (moveBrush) {
     using = true
     var x = moveBrush.clientX
     var y = moveBrush.clientY
-
-    lastPoint = {
-        "x":x,
-        "y":y
+    if (usingEraser) {
+        context.clearRect(x - 3, y - 3, 12, 12)
+    } else {
+        lastPoint = {
+            "x": x,
+            "y": y
+        }
+        context.fillRect(x - 3, y - 3, 6, 6)
     }
-    context.fillRect(x-3,y-3,6,6)
 }
 
+
+//画线函数
 function drawLine(x1, y1, x2, y2) {
     context.beginPath();
     context.strockStyle = 'black'
@@ -45,19 +75,26 @@ function drawLine(x1, y1, x2, y2) {
     context.lineWidth = 6
 }
 
-
+//当鼠标移动时，记录新点位置，并和上一点画线
 newCanvas.onmousemove = function (moveBrush) {
-    if (using){
+    if (using) {
         var x = moveBrush.clientX
         var y = moveBrush.clientY
-        var newPoint = {"x":x, "y":y}
-        context.fillRect(x-3,y-3,6,6)
-        drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
-        lastPoint = newPoint
-        console.log(lastPoint, newPoint)
+        if (usingEraser) {
+            context.clearRect(x - 3, y - 3, 12, 12)
+        } else {
+
+            var newPoint = { "x": x, "y": y }
+            context.fillRect(x - 3, y - 3, 6, 6)
+            drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+            lastPoint = newPoint //画完后，新点赋值给上一点
+        }
     }
 }
 
+
+
+//当鼠标送开时，画笔关闭
 newCanvas.onmouseup = function (moveBrush) {
     using = false
 }
