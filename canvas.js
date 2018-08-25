@@ -1,11 +1,14 @@
 var newCanvas = document.getElementById('myCanvas')
 var context = newCanvas.getContext('2d')
 
+
 function reSizeCanvas(newCanvas) {
     var pageWidth = document.documentElement.clientWidth
     var pageHeight = document.documentElement.clientHeight
     newCanvas.width = pageWidth
     newCanvas.height = pageHeight
+    context.fillStyle = "#fff";
+    context.fillRect(0, 0, newCanvas.width, newCanvas.height);
 }
 
 //判定是否支持手机屏幕的事件，如果不是未定义，则代表是手机屏幕，else电脑代码
@@ -70,8 +73,7 @@ if (document.ontouchstart !== undefined) {
         brush.classList.remove('highlighted')
         eraser.classList.remove('highlighted')
 
-        var url = myCanvas.toDataURL("image/png")
-        console.log(url)
+        var url = newCanvas.toDataURL("image/png")
         var a = document.createElement('a')
         document.body.appendChild(a)
         a.href = url
@@ -83,7 +85,7 @@ if (document.ontouchstart !== undefined) {
 
     //清屏函数，把全屏覆盖背景色
     function clearScreen() {
-        context.fillStyle = "#ddd"
+        context.fillStyle = "#fff"
         context.fillRect(0, 0, newCanvas.width, newCanvas.height)
     }
 
