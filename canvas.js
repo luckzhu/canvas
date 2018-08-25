@@ -249,6 +249,7 @@ else {
     //橡皮擦控制
     var usingEraser = false
 
+    
     var brush = document.getElementById('brush')
     var eraser = document.getElementById('eraser')
     var clear = document.getElementById('clear')
@@ -379,6 +380,7 @@ else {
     big.onclick = function () {
         context.lineWidth = 8;
     }
+
 
 
 
