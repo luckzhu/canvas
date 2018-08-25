@@ -102,3 +102,29 @@ body,ol,li{
 .colorBar li.highlighted {
     transform: scale(1.1)
 }
+
+.lineWidth {
+    position: absolute;
+    right: 20px;
+    top: 68px;
+    list-style: none;
+}
+.lineWidth li {
+    margin: 20px 0px;;
+    border: 1px solid green;
+    width: 50px;
+    background: #333;
+}
+
+.lineWidth .small {
+    height: 2px;
+}
+
+.lineWidth .middle {
+    height: 4px;
+}
+
+.lineWidth .big {
+    height: 8px;
+}
+
