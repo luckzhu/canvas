@@ -6,16 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./canvas.css">
+    <script src="//at.alicdn.com/t/font_808368_jrjux75acl.js"></script>
 
     <title>My canvas</title>
 </head>
 
 <body>
     <canvas id="myCanvas"></canvas>
-    <div class="actions" id="actions">
+    <!-- <div class="actions" id="actions">
         <button id="eraser">橡皮擦</button>
         <button id="brush">画笔</button>
-    </div>
+    </div> -->
+
+    
+<ol class="functionBar">
+    <li class="brush" >
+        <svg class="icon" id="brush" aria-hidden="true">
+            <use xlink:href="#icon-brush"></use>
+        </svg>
+    </li>
+    <li class="eraser" >
+        <svg class="icon" id="eraser" aria-hidden="true">
+            <use xlink:href="#icon-eraser"></use>
+        </svg>
+    </li>
+    <li class="clear">
+        <svg class="icon"  id="clear" aria-hidden="true">
+            <use xlink:href="#icon-clear"></use>
+        </svg>
+    </li>
+</ol>
+
+
+<ol class="colorBar">
+    <li class="red" id="red"></li>
+    <li class="blue" id="blue"></li>
+    <li class="green" id="green"></li>
+    <li class="pink"id="pink"></li>
+    <li class="purple" id="purple"></li>
+</ol>
+
+
+
 
 </body>
 <script src="./canvas.js"></script>

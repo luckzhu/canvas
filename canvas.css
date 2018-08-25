@@ -1,14 +1,24 @@
 
-body {
+body,ol,li{
     margin: 0;
     padding: 0;
 }
 
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
+
 #myCanvas {
     background: #ddd;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 
-.actions {
+/* .actions {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -23,5 +33,72 @@ body {
     
 }.actions.x #eraser {
     display: none;
+} */
+
+.functionBar {
+    
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    display: flex;
+    list-style-type: none;
 }
 
+.functionBar li {
+   transition: all 0.5s;
+    margin: 8px;
+}
+
+.functionBar svg {
+    width: 25px;
+    height: 25px;
+    fill: #333;
+}
+
+.functionBar svg.highlighted {
+    fill: red;
+    transform: scale(1.2)
+}
+
+
+
+.colorBar {
+    list-style: none;
+    position: absolute;
+    left: 20px;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.colorBar li {   
+    width: 30px;
+    height: 30px;
+    margin: 4px 0px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.colorBar .red {
+    background-color: red;
+}
+
+.colorBar .green {
+    background-color: green;
+}
+
+.colorBar .blue {
+    background-color: blue;
+}
+
+.colorBar .pink {
+    background-color: pink;
+}
+
+.colorBar .purple {
+    background-color: purple;
+}
+
+.colorBar li.highlighted {
+    transform: scale(1.1)
+}
