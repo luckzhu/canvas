@@ -252,12 +252,14 @@ else {
     var brush = document.getElementById('brush')
     var eraser = document.getElementById('eraser')
     var clear = document.getElementById('clear')
+    var save = document.getElementById('save')
 
     brush.onclick = function () {
         usingEraser = false
         brush.classList.add('highlighted')
         eraser.classList.remove('highlighted')
         clear.classList.remove('highlighted')
+        save.classList.remove('highlighted')
     }
 
     eraser.onclick = function () {
@@ -265,6 +267,7 @@ else {
         eraser.classList.add('highlighted')
         brush.classList.remove('highlighted')
         clear.classList.remove('highlighted')
+        save.classList.remove('highlighted')
     }
 
     clear.onclick = function () {
@@ -272,11 +275,28 @@ else {
         clear.classList.add('highlighted')
         brush.classList.remove('highlighted')
         eraser.classList.remove('highlighted')
+        save.classList.remove('highlighted')
     }
+
+    save.onclick = function () {
+        save.classList.add('highlighted')
+        clear.classList.remove('highlighted')
+        brush.classList.remove('highlighted')
+        eraser.classList.remove('highlighted')
+
+        var url = newCanvas.toDataURL("image/png")
+        var a = document.createElement('a')
+        document.body.appendChild(a)
+        a.href = url
+        a.download = 'my picture'
+        a.target = "_blank"
+        a.click()
+    }
+
 
     //清屏函数，把全屏覆盖背景色
     function clearScreen() {
-        context.fillStyle = "#ddd"
+        context.fillStyle = "#fff"
         context.fillRect(0, 0, newCanvas.width, newCanvas.height)
     }
 
@@ -359,7 +379,6 @@ else {
     big.onclick = function () {
         context.lineWidth = 8;
     }
-
 
 
 
